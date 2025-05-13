@@ -157,9 +157,11 @@
 ## 分组展示gif实验
 <style>
 .carousel-container {
+  position: relative;
   width: 100%;
   overflow: hidden;
-  position: relative;
+  max-width: 1000px;
+  margin: auto;
 }
 
 .carousel-track {
@@ -181,15 +183,31 @@
   border-radius: 10px;
 }
 
-.carousel-buttons {
-  text-align: center;
-  margin-top: 10px;
+/* 左右按钮样式 */
+.carousel-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 15px;
+  font-size: 18px;
+  cursor: pointer;
+  border-radius: 50%;
 }
 
-.carousel-buttons button {
-  padding: 10px 20px;
-  margin: 0 10px;
-  font-size: 16px;
+.carousel-button:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+#prevBtn {
+  left: 10px;
+}
+
+#nextBtn {
+  right: 10px;
 }
 </style>
 
@@ -211,11 +229,10 @@
       <img src="assets/gif9.gif">
     </div>
   </div>
-</div>
 
-<div class="carousel-buttons">
-  <button onclick="prevGroup()">上一组</button>
-  <button onclick="nextGroup()">下一组</button>
+  <!-- 左右切换按钮 -->
+  <button class="carousel-button" id="prevBtn" onclick="prevGroup()">❮</button>
+  <button class="carousel-button" id="nextBtn" onclick="nextGroup()">❯</button>
 </div>
 
 <script>
@@ -238,3 +255,4 @@
     updateCarousel();
   }
 </script>
+
