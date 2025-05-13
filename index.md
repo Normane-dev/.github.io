@@ -144,3 +144,11 @@
 
   window.addEventListener("resize", updateSlide);
 </script>
+
+<div style="text-align:center;">
+  <video width="640" controls autoplay loop muted>
+    <source src="assets/demo.mp4" type="video/mp4">
+    你的浏览器不支持视频播放。
+  </video>
+  <p style="font-size:14px; margin-top:5px;">视频 1：系统演示</p>
+</div>
