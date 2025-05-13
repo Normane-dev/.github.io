@@ -131,3 +131,93 @@
   window.addEventListener("resize", updateSlide);
 </script>
 
+# 🎞️ 滑动轮播演示图
+
+<style>
+.slider-container {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  margin: auto;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #ccc;
+}
+
+.slider {
+  display: flex;
+  transition: transform 0.5s ease;
+  width: 100%;
+}
+
+.slider img {
+  width: 100%;
+  flex-shrink: 0;
+}
+
+/* 按钮样式：左右两侧浮动 */
+.nav-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.4);
+  color: white;
+  border: none;
+  font-size: 24px;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+#prevBtn {
+  left: 10px;
+}
+
+#nextBtn {
+  right: 10px;
+}
+
+.nav-button:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+</style>
+
+<div class="slider-container">
+  <div class="slider" id="slider">
+    <img src="assets/gif1.gif" alt="GIF 1">
+    <img src="assets/gif2.gif" alt="GIF 2">
+    <img src="assets/gif3.gif" alt="GIF 3">
+  </div>
+
+  <!-- 左右按钮 -->
+  <button class="nav-button" id="prevBtn" onclick="prevSlide()">&#10094;</button>
+  <button class="nav-button" id="nextBtn" onclick="nextSlide()">&#10095;</button>
+</div>
+
+<script>
+  const slider = document.getElementById("slider");
+  const totalSlides = slider.children.length;
+  let currentSlide = 0;
+
+  function updateSlide() {
+    const slideWidth = slider.clientWidth;
+    slider.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
+  }
+
+  function prevSlide() {
+    currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+    updateSlide();
+  }
+
+  function nextSlide() {
+    currentSlide = (currentSlide + 1) % totalSlides;
+    updateSlide();
+  }
+
+  setInterval(() => {
+    nextSlide();
+  }, 5000);
+
+  window.addEventListener("resize", updateSlide);
+</script>
