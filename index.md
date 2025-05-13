@@ -24,4 +24,32 @@
 
 - 文本生成视频（Text-to-Video）
 - Transformer 编码器
-- Diffusion 模型
+- Diffusion 模型 
+## 🎬 项目演示轮播图
+
+<div style="text-align: center; max-width: 600px; margin: auto;">
+  <img id="gifSlider" src="assets/gif1.gif" alt="GIF展示" style="width:100%; border-radius: 10px; box-shadow: 0 0 10px #ccc;">
+  <br>
+  <button onclick="prevGif()">⬅️ 上一个</button>
+  <button onclick="nextGif()">➡️ 下一个</button>
+</div>
+
+<script>
+  const gifs = ["assets/gif1.gif", "assets/gif2.gif", "assets/gif3.gif"]; // 修改为你实际上传的 GIF 路径
+  let currentIndex = 0;
+
+  function showGif(index) {
+    const img = document.getElementById("gifSlider");
+    img.src = gifs[index];
+  }
+
+  function prevGif() {
+    currentIndex = (currentIndex - 1 + gifs.length) % gifs.length;
+    showGif(currentIndex);
+  }
+
+  function nextGif() {
+    currentIndex = (currentIndex + 1) % gifs.length;
+    showGif(currentIndex);
+  }
+</script>
