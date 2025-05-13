@@ -54,17 +54,19 @@
   }
 </script>
 
-## 🎞️ 滑动轮播演示图
+# 🎞️ 滑动轮播演示图
+
+欢迎体验自动播放的 GIF 滑动展示功能。
 
 <style>
 .slider-container {
-  position: relative;
   width: 100%;
   max-width: 600px;
-  margin: auto;
   overflow: hidden;
+  margin: auto;
   border-radius: 10px;
   box-shadow: 0 0 10px #ccc;
+  position: relative;
 }
 
 .slider {
@@ -77,32 +79,13 @@
   width: 100%;
   flex-shrink: 0;
 }
-
-/* 按钮样式：左右两侧浮动 */
-.nav-button {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 10;
-  background-color: rgba(0, 0, 0, 0.4);
-  color: white;
-  border: none;
-  font-size: 24px;
-  padding: 10px 15px;
-  cursor: pointer;
-  border-radius: 50%;
+.button-container {
+  text-align: center;
+  margin-top: 10px;
 }
-
-#prevBtn {
-  left: 10px;
-}
-
-#nextBtn {
-  right: 10px;
-}
-
-.nav-button:hover {
-  background-color: rgba(0, 0, 0, 0.7);
+.button-container button {
+  padding: 10px 20px;
+  font-size: 16px;
 }
 </style>
 
@@ -112,10 +95,11 @@
     <img src="assets/gif2.gif" alt="GIF 2">
     <img src="assets/gif3.gif" alt="GIF 3">
   </div>
+</div>
 
-  <!-- 左右按钮 -->
-  <button class="nav-button" id="prevBtn" onclick="prevSlide()">&#10094;</button>
-  <button class="nav-button" id="nextBtn" onclick="nextSlide()">&#10095;</button>
+<div class="button-container">
+  <button onclick="prevSlide()">⬅️ 上一张</button>
+  <button onclick="nextSlide()">➡️ 下一张</button>
 </div>
 
 <script>
@@ -138,121 +122,12 @@
     updateSlide();
   }
 
+  // 自动滑动每5秒
   setInterval(() => {
     nextSlide();
   }, 5000);
 
+  // 防止页面大小调整后位置错乱
   window.addEventListener("resize", updateSlide);
-</script>
-
-## 放置视频实验
-<div style="text-align:center;">
-  <video width="640" controls autoplay loop muted>
-    <source src="assets/demo.mp4" type="video/mp4">
-    你的浏览器不支持视频播放。
-  </video>
-  <p style="font-size:14px; margin-top:5px;">视频 1：系统演示</p>
-</div>
-
-## 分组展示gif实验
-<style>
-.carousel-container {
-  position: relative;
-  width: 100%;
-  overflow: hidden;
-  max-width: 1000px;
-  margin: auto;
-}
-
-.carousel-track {
-  display: flex;
-  transition: transform 0.5s ease;
-  width: 300%; /* 三组 */
-}
-
-.carousel-group {
-  display: flex;
-  justify-content: center;
-  flex: 0 0 100%;
-  gap: 20px;
-}
-
-.carousel-group img {
-  width: 200px;
-  height: auto;
-  border-radius: 10px;
-}
-
-/* 左右按钮样式 */
-.carousel-button {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 10;
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white;
-  border: none;
-  padding: 15px;
-  font-size: 18px;
-  cursor: pointer;
-  border-radius: 50%;
-}
-
-.carousel-button:hover {
-  background-color: rgba(0, 0, 0, 0.7);
-}
-
-#prevBtn {
-  left: 10px;
-}
-
-#nextBtn {
-  right: 10px;
-}
-</style>
-
-<div class="carousel-container">
-  <div class="carousel-track" id="carouselTrack">
-    <div class="carousel-group">
-      <img src="assets/gif1.gif">
-      <img src="assets/gif2.gif">
-      <img src="assets/gif3.gif">
-    </div>
-    <div class="carousel-group">
-      <img src="assets/gif4.gif">
-      <img src="assets/gif5.gif">
-      <img src="assets/gif6.gif">
-    </div>
-    <div class="carousel-group">
-      <img src="assets/gif7.gif">
-      <img src="assets/gif8.gif">
-      <img src="assets/gif9.gif">
-    </div>
-  </div>
-
-  <!-- 左右切换按钮 -->
-  <button class="carousel-button" id="prevBtn" onclick="prevGroup()">❮</button>
-  <button class="carousel-button" id="nextBtn" onclick="nextGroup()">❯</button>
-</div>
-
-<script>
-  let currentIndex = 0;
-  const totalGroups = 3;
-
-  function updateCarousel() {
-    const track = document.getElementById("carouselTrack");
-    const offset = -100 * currentIndex;
-    track.style.transform = `translateX(${offset}%)`;
-  }
-
-  function prevGroup() {
-    currentIndex = (currentIndex - 1 + totalGroups) % totalGroups;
-    updateCarousel();
-  }
-
-  function nextGroup() {
-    currentIndex = (currentIndex + 1) % totalGroups;
-    updateCarousel();
-  }
 </script>
 
