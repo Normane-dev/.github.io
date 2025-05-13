@@ -53,3 +53,81 @@
     showGif(currentIndex);
   }
 </script>
+
+# 🎞️ 滑动轮播演示图
+
+欢迎体验自动播放的 GIF 滑动展示功能。
+
+<style>
+.slider-container {
+  width: 100%;
+  max-width: 600px;
+  overflow: hidden;
+  margin: auto;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #ccc;
+  position: relative;
+}
+
+.slider {
+  display: flex;
+  transition: transform 0.5s ease;
+  width: 100%;
+}
+
+.slider img {
+  width: 100%;
+  flex-shrink: 0;
+}
+.button-container {
+  text-align: center;
+  margin-top: 10px;
+}
+.button-container button {
+  padding: 10px 20px;
+  font-size: 16px;
+}
+</style>
+
+<div class="slider-container">
+  <div class="slider" id="slider">
+    <img src="assets/gif1.gif" alt="GIF 1">
+    <img src="assets/gif2.gif" alt="GIF 2">
+    <img src="assets/gif3.gif" alt="GIF 3">
+  </div>
+</div>
+
+<div class="button-container">
+  <button onclick="prevSlide()">⬅️ 上一张</button>
+  <button onclick="nextSlide()">➡️ 下一张</button>
+</div>
+
+<script>
+  const slider = document.getElementById("slider");
+  const totalSlides = slider.children.length;
+  let currentSlide = 0;
+
+  function updateSlide() {
+    const slideWidth = slider.clientWidth;
+    slider.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
+  }
+
+  function prevSlide() {
+    currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+    updateSlide();
+  }
+
+  function nextSlide() {
+    currentSlide = (currentSlide + 1) % totalSlides;
+    updateSlide();
+  }
+
+  // 自动滑动每5秒
+  setInterval(() => {
+    nextSlide();
+  }, 5000);
+
+  // 防止页面大小调整后位置错乱
+  window.addEventListener("resize", updateSlide);
+</script>
+
