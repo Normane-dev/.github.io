@@ -10,7 +10,7 @@
 
 下方是模型生成的视频预览（GIF 动画将自动播放）：
 
-![演示动画](assets/eg.gif)
+![演示动画](asserts/eg.gif)
 
 ## 📄 论文地址
 
@@ -28,14 +28,14 @@
 ## 🎬 项目演示轮播图
 
 <div style="text-align: center; max-width: 600px; margin: auto;">
-  <img id="gifSlider" src="assets/gif1.gif" alt="GIF展示" style="width:100%; border-radius: 10px; box-shadow: 0 0 10px #ccc;">
+  <img id="gifSlider" src="asserts/gif1.gif" alt="GIF展示" style="width:100%; border-radius: 10px; box-shadow: 0 0 10px #ccc;">
   <br>
   <button onclick="prevGif()">⬅️ 上一个</button>
   <button onclick="nextGif()">➡️ 下一个</button>
 </div>
 
 <script>
-  const gifs = ["assets/gif1.gif", "assets/gif2.gif", "assets/gif3.gif"]; // 修改为你实际上传的 GIF 路径
+  const gifs = ["asserts/gif1.gif", "asserts/gif2.gif", "asserts/gif3.gif"]; // 修改为你实际上传的 GIF 路径
   let currentIndex = 0;
 
   function showGif(index) {
@@ -58,14 +58,14 @@
 欢迎来到我的演示页面！下面是多个自动播放的动图，点击按钮即可切换查看。
 
 <div style="text-align: center; max-width: 600px; margin: auto;">
-  <img id="gifSlider" src="assets/gif1.gif" alt="GIF展示" style="width:100%; border-radius: 10px; box-shadow: 0 0 10px #ccc;">
+  <img id="gifSlider" src="asserts/gif1.gif" alt="GIF展示" style="width:100%; border-radius: 10px; box-shadow: 0 0 10px #ccc;">
   <br><br>
   <button onclick="prevGif()" style="padding: 8px 16px; font-size: 16px;">⬅️ 上一个</button>
   <button onclick="nextGif()" style="padding: 8px 16px; font-size: 16px;">➡️ 下一个</button>
 </div>
 
 <script>
-  const gifs = ["assets/gif1.gif", "assets/gif2.gif", "assets/gif3.gif"];
+  const gifs = ["asserts/gif1.gif", "asserts/gif2.gif", "asserts/gif3.gif"];
   let currentIndex = 0;
 
   function showGif(index) {
@@ -143,9 +143,9 @@
 
 <div class="slider-container">
   <div class="slider" id="slider">
-    <img src="assets/gif1.gif" alt="GIF 1">
-    <img src="assets/gif2.gif" alt="GIF 2">
-    <img src="assets/gif3.gif" alt="GIF 3">
+    <img src="asserts/gif1.gif" alt="GIF 1">
+    <img src="asserts/gif2.gif" alt="GIF 2">
+    <img src="asserts/gif3.gif" alt="GIF 3">
   </div>
 
   <!-- 左右按钮 -->
