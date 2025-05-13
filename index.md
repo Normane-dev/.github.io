@@ -53,20 +53,53 @@
     showGif(currentIndex);
   }
 </script>
+##🎬 项目演示轮播图
 
-# 🎞️ 滑动轮播演示图
+欢迎来到我的演示页面！下面是多个自动播放的动图，点击按钮即可切换查看。
 
-欢迎体验自动播放的 GIF 滑动展示功能。
+<div style="text-align: center; max-width: 600px; margin: auto;">
+  <img id="gifSlider" src="assets/gif1.gif" alt="GIF展示" style="width:100%; border-radius: 10px; box-shadow: 0 0 10px #ccc;">
+  <br><br>
+  <button onclick="prevGif()" style="padding: 8px 16px; font-size: 16px;">⬅️ 上一个</button>
+  <button onclick="nextGif()" style="padding: 8px 16px; font-size: 16px;">➡️ 下一个</button>
+</div>
+
+<script>
+  const gifs = ["assets/gif1.gif", "assets/gif2.gif", "assets/gif3.gif"];
+  let currentIndex = 0;
+
+  function showGif(index) {
+    const img = document.getElementById("gifSlider");
+    img.src = gifs[index];
+  }
+
+  function prevGif() {
+    currentIndex = (currentIndex - 1 + gifs.length) % gifs.length;
+    showGif(currentIndex);
+  }
+
+  function nextGif() {
+    currentIndex = (currentIndex + 1) % gifs.length;
+    showGif(currentIndex);
+  }
+
+  // 可选：每隔5秒自动切换GIF
+  setInterval(() => {
+    nextGif();
+  }, 5000);
+</script>
+
+## 🎞️ 滑动轮播演示图
 
 <style>
 .slider-container {
+  position: relative;
   width: 100%;
   max-width: 600px;
-  overflow: hidden;
   margin: auto;
+  overflow: hidden;
   border-radius: 10px;
   box-shadow: 0 0 10px #ccc;
-  position: relative;
 }
 
 .slider {
@@ -79,13 +112,32 @@
   width: 100%;
   flex-shrink: 0;
 }
-.button-container {
-  text-align: center;
-  margin-top: 10px;
+
+/* 按钮样式：左右两侧浮动 */
+.nav-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.4);
+  color: white;
+  border: none;
+  font-size: 24px;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 50%;
 }
-.button-container button {
-  padding: 10px 20px;
-  font-size: 16px;
+
+#prevBtn {
+  left: 10px;
+}
+
+#nextBtn {
+  right: 10px;
+}
+
+.nav-button:hover {
+  background-color: rgba(0, 0, 0, 0.7);
 }
 </style>
 
@@ -95,11 +147,10 @@
     <img src="assets/gif2.gif" alt="GIF 2">
     <img src="assets/gif3.gif" alt="GIF 3">
   </div>
-</div>
 
-<div class="button-container">
-  <button onclick="prevSlide()">⬅️ 上一张</button>
-  <button onclick="nextSlide()">➡️ 下一张</button>
+  <!-- 左右按钮 -->
+  <button class="nav-button" id="prevBtn" onclick="prevSlide()">&#10094;</button>
+  <button class="nav-button" id="nextBtn" onclick="nextSlide()">&#10095;</button>
 </div>
 
 <script>
@@ -122,12 +173,10 @@
     updateSlide();
   }
 
-  // 自动滑动每5秒
   setInterval(() => {
     nextSlide();
   }, 5000);
 
-  // 防止页面大小调整后位置错乱
   window.addEventListener("resize", updateSlide);
 </script>
 
