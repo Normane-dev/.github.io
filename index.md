@@ -180,3 +180,114 @@
   window.addEventListener("resize", updateSlide);
 </script>
 
+##视频播放实验
+<div style="text-align:center;">
+  <video width="640" controls autoplay loop muted>
+    <source src="asserts/demo.mp4" type="video/mp4">
+    你的浏览器不支持视频播放。
+  </video>
+  <p style="font-size:14px; margin-top:5px;">视频 1：系统演示</p>
+</div>
+
+##多组轮播实验
+<style>
+.carousel-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease;
+  width: 300%; /* 三组 */
+}
+
+.carousel-group {
+  display: flex;
+  justify-content: center;
+  flex: 0 0 100%;
+  gap: 20px;
+}
+
+.carousel-group img {
+  width: 200px;
+  height: auto;
+  border-radius: 10px;
+}
+
+/* 左右按钮样式 */
+.carousel-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 15px;
+  font-size: 18px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.carousel-button:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+#prevBtn {
+  left: 10px;
+}
+
+#nextBtn {
+  right: 10px;
+}
+</style>
+
+<div class="carousel-container">
+  <div class="carousel-track" id="carouselTrack">
+    <div class="carousel-group">
+      <img src="asserts/gif1.gif">
+      <img src="asserts/gif2.gif">
+      <img src="asserts/gif3.gif">
+    </div>
+    <div class="carousel-group">
+      <img src="asserts/gif4.gif">
+      <img src="asserts/gif5.gif">
+      <img src="asserts/gif6.gif">
+    </div>
+    <div class="carousel-group">
+      <img src="asserts/gif7.gif">
+      <img src="asserts/gif8.gif">
+      <img src="asserts/gif9.gif">
+    </div>
+  </div>
+
+  <!-- 左右切换按钮 -->
+  <button class="carousel-button" id="prevBtn" onclick="prevGroup()">❮</button>
+  <button class="carousel-button" id="nextBtn" onclick="nextGroup()">❯</button>
+</div>
+
+<script>
+  let currentIndex = 0;
+  const totalGroups = 3;
+
+  function updateCarousel() {
+    const track = document.getElementById("carouselTrack");
+    const offset = -100 * currentIndex;
+    track.style.transform = `translateX(${offset}%)`;
+  }
+
+  function prevGroup() {
+    currentIndex = (currentIndex - 1 + totalGroups) % totalGroups;
+    updateCarousel();
+  }
+
+  function nextGroup() {
+    currentIndex = (currentIndex + 1) % totalGroups;
+    updateCarousel();
+  }
+</script>
+
