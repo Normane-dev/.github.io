@@ -145,6 +145,7 @@
   window.addEventListener("resize", updateSlide);
 </script>
 
+## 放置视频实验
 <div style="text-align:center;">
   <video width="640" controls autoplay loop muted>
     <source src="assets/demo.mp4" type="video/mp4">
