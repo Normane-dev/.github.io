@@ -153,3 +153,88 @@
   </video>
   <p style="font-size:14px; margin-top:5px;">视频 1：系统演示</p>
 </div>
+
+## 分组展示gif实验
+<style>
+.carousel-container {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease;
+  width: 300%; /* 三组 */
+}
+
+.carousel-group {
+  display: flex;
+  justify-content: center;
+  flex: 0 0 100%;
+  gap: 20px;
+}
+
+.carousel-group img {
+  width: 200px;
+  height: auto;
+  border-radius: 10px;
+}
+
+.carousel-buttons {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.carousel-buttons button {
+  padding: 10px 20px;
+  margin: 0 10px;
+  font-size: 16px;
+}
+</style>
+
+<div class="carousel-container">
+  <div class="carousel-track" id="carouselTrack">
+    <div class="carousel-group">
+      <img src="assets/gif1.gif">
+      <img src="assets/gif2.gif">
+      <img src="assets/gif3.gif">
+    </div>
+    <div class="carousel-group">
+      <img src="assets/gif4.gif">
+      <img src="assets/gif5.gif">
+      <img src="assets/gif6.gif">
+    </div>
+    <div class="carousel-group">
+      <img src="assets/gif7.gif">
+      <img src="assets/gif8.gif">
+      <img src="assets/gif9.gif">
+    </div>
+  </div>
+</div>
+
+<div class="carousel-buttons">
+  <button onclick="prevGroup()">上一组</button>
+  <button onclick="nextGroup()">下一组</button>
+</div>
+
+<script>
+  let currentIndex = 0;
+  const totalGroups = 3;
+
+  function updateCarousel() {
+    const track = document.getElementById("carouselTrack");
+    const offset = -100 * currentIndex;
+    track.style.transform = `translateX(${offset}%)`;
+  }
+
+  function prevGroup() {
+    currentIndex = (currentIndex - 1 + totalGroups) % totalGroups;
+    updateCarousel();
+  }
+
+  function nextGroup() {
+    currentIndex = (currentIndex + 1) % totalGroups;
+    updateCarousel();
+  }
+</script>
